@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { LandingPage } from "./pages/landing-page";
+import { PlanetProfilePage } from "./pages/planet-profile-page";
 import { PlanetsPage } from "./pages/planets-page";
+import { TitlesPage } from "./pages/titles-page";
 import { secondary } from "./styles/styles";
 
 const StyledApp = styled.div`
@@ -18,9 +20,9 @@ export const App = () => {
         age={age}
         onChangeAge={(newAge: number) => setAge(newAge)}
         onContinue={() => setCurrentPage("planets")}
-        />
+      />
     );
-  }
+  };
 
   const renderPage = (page: string) => {
     switch (page) {
@@ -30,7 +32,7 @@ export const App = () => {
         }
         return renderDefaultPage();
       default:
-        return renderDefaultPage();
+        return <PlanetProfilePage />;
     }
   };
 
