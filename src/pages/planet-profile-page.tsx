@@ -9,6 +9,8 @@ const StyledH1 = styled.h1`
   margin: 0.5rem 1rem 1rem;
   font-size: 4rem;
   color: ${primary};
+  -webkit-box-shadow: 2px 1px 50px -6px #ffffff;
+  box-shadow: 2px 1px 50px -6px #ffffff;
 `;
 
 const ProfileContainer = styled.div`
@@ -46,12 +48,27 @@ const SvgSymbol = styled.div`
   mask: url(logo.svg) no-repeat center;
 `;
 
+const GlowingPlanet = styled.div`
+  background: #f8f;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 50px #fff, /* inner white */ inset 20px 0 80px #f0f,
+    /* inner left magenta short */ inset -20px 0 80px #0ff,
+    /* inner right cyan short */ inset 20px 0 300px #f0f,
+    /* inner left magenta broad */ inset -20px 0 300px #0ff,
+    /* inner right cyan broad */ 0 0 50px #fff,
+    /* outer white */ -10px 0 80px #f0f,
+    /* outer left magenta */ 10px 0 80px #0ff; /* outer right cyan */
+`;
+
 export const PlanetProfilePage: FunctionComponent<Props> = () => {
   return (
     <ContentContainer>
       <ProfileContainer>
         <LeftContainer>
-          <img src="assets/saturn.png" />
+          {/* <img src="assets/saturn.png" /> */}
+          <GlowingPlanet />
         </LeftContainer>
         <RightContainer>
           <Caption>You will be moving to</Caption>
