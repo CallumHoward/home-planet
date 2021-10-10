@@ -3,8 +3,6 @@ import styled from "styled-components";
 import { ContentContainer } from "../styles/page-styles";
 import { primary } from "../styles/styles";
 
-type Props = {};
-
 const StyledH1 = styled.h1`
   margin: 0.5rem 1rem 1rem;
   font-size: 4rem;
@@ -62,7 +60,11 @@ const GlowingPlanet = styled.div`
     /* outer left magenta */ 10px 0 80px #0ff; /* outer right cyan */
 `;
 
-export const PlanetProfilePage: FunctionComponent<Props> = () => {
+type Props = {
+  planet: Planet;
+};
+
+export const PlanetProfilePage: FunctionComponent<Props> = ({planet}) => {
   return (
     <ContentContainer>
       <ProfileContainer>
@@ -72,19 +74,9 @@ export const PlanetProfilePage: FunctionComponent<Props> = () => {
         </LeftContainer>
         <RightContainer>
           <Caption>You will be moving to</Caption>
-          <StyledH1>Saturn</StyledH1>
+          <StyledH1>{planet.name}</StyledH1>
           <SvgSymbol />
-          <StyledP>
-            Doggo ipsum heckin angery woofer blop I am bekom fat mlem dat tungg
-            tho much ruin diet sub woofer adorable doggo the neighborhood
-            pupper, very taste wow adorable doggo vvv pupper shooberino big ol
-            doing me a frighten. Aqua doggo long doggo noodle horse most angery
-            pupper I have ever seen h*ck smol borking doggo with a long snoot
-            for pats, you are doing me a frighten wrinkler you are doing me the
-            shock woofer. I am bekom fat vvv many pats, borkf. Blop you are
-            doing me a frighten many pats blop corgo tungg, doggorino boofers
-            corgo.
-          </StyledP>
+          <StyledP>{planet.description}</StyledP>
         </RightContainer>
       </ProfileContainer>
     </ContentContainer>

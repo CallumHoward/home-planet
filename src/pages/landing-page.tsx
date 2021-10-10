@@ -1,32 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
-import { ContentContainer } from "../styles/page-styles";
-import { primary, secondary } from "../styles/styles";
-
-const StyledInput = styled.input`
-  font-size: 1.5rem;
-  width: 12rem;
-  height: 2.5rem;
-  margin: 2rem 1rem;
-  padding: 0.5rem 1rem;
-
-  border: 2px solid ${secondary};
-  background: black;
-  color: white;
-`;
-
-const StyledButton = styled.button`
-  font-size: 1.5rem;
-  height: 2.5rem;
-  width: 2.5rem;
-  margin: 2rem 1rem;
-  padding: 0.5rem;
-  box-sizing: content-box;
-
-  border: 2px solid ${secondary};
-  background: black;
-  color: ${secondary};
-`;
+import { ContentContainer, StyledButton, StyledInput } from "../styles/page-styles";
+import { primary } from "../styles/styles";
 
 const StyledH1 = styled.h1`
   font-size: 8rem;
