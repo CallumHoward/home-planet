@@ -4,6 +4,7 @@ import { ContentContainer } from "../styles/page-styles";
 import { primary, secondary } from "../styles/styles";
 
 const StyledInput = styled.input`
+  font-size: 1.5rem;
   width: 12rem;
   height: 2.5rem;
   margin: 2rem 1rem;
@@ -29,6 +30,7 @@ const StyledButton = styled.button`
 
 const StyledH1 = styled.h1`
   font-size: 8rem;
+  letter-spacing: 0.5rem;
   color: ${primary};
 `;
 
@@ -50,8 +52,14 @@ export const LandingPage: FunctionComponent<Props> = ({
   return (
     <ContentContainer>
       <StyledH1>HOME PLANET</StyledH1>
-      <StyledP><b>FIND YOUR WAY HOME</b></StyledP>
+      <StyledP>
+        <b>FIND YOUR WAY HOME</b>
+      </StyledP>
       <div>
+        <StyledInput
+          placeholder={"Name..."}
+          // onChange={}
+        ></StyledInput>
         <StyledInput
           placeholder={"Age..."}
           onChange={(e) => onChangeAge(parseInt(e.target.value))}
