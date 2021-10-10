@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useCollection } from 'react-firebase-hooks/firestore';
 
 import { LandingPage } from "./pages/landing-page";
-import { PlanetProfilePage } from "./pages/planet-profile-page";
 import { PlanetsPage } from "./pages/planets-page";
-import { TitlesPage } from "./pages/titles-page";
+// import { TitlesPage } from "./pages/titles-page";
 import { secondary } from "./styles/styles";
 
 const StyledApp = styled.div`
@@ -14,9 +12,9 @@ const StyledApp = styled.div`
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
-import { upsertDb } from "./fixtures/content";
+// import { upsertDb } from "./fixtures/content";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 

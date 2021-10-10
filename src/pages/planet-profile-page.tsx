@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import { ContentContainer } from "../styles/page-styles";
 import { primary } from "../styles/styles";
+import { Planet } from "../types/content";
 
 const StyledH1 = styled.h1`
   margin: 0.5rem 1rem 1rem;
