@@ -16,7 +16,7 @@
     "build": "concurrently --success --names tsc,esb -c green.bold,blue.bold tsc yarn:bundle",
     "bundle": "node ./esbuild.config.mjs",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d docs",
+    "deploy": "gh-pages -d www",
     "clean": "rimraf www/dist",
     "test": "echo 'TODO'"
   },
