@@ -34,7 +34,7 @@ const StyledInput = styled.input`
 
 const StyledButton = styled.button`
   height: 1.5rem;
-  aspect-ratio: 1;
+  width: 1.5rem;
   margin: 2rem 1rem;
   padding: 0.25rem;
   box-sizing: content-box;
