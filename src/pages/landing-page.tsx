@@ -1,25 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
+import { ContentContainer } from "../styles/page-styles";
 import { primary, secondary } from "../styles/styles";
-
-type Props = {};
-
-const ContentContainer = styled.div`
-  height: 100%;
-  margin: 0 25%;
-
-  > * {
-    margin-bottom: 2rem;
-  }
-
-  color: ${secondary};
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-`;
 
 const StyledInput = styled.input`
   width: 6rem;
@@ -44,15 +26,34 @@ const StyledButton = styled.button`
   color: ${secondary};
 `;
 
-export const LandingPage: FunctionComponent<Props> = () => {
+type Props = {
+  age: number | undefined;
+  onChangeAge: (newAge: number) => void;
+  onContinue: () => void;
+};
+
+export const LandingPage: FunctionComponent<Props> = ({
+  age,
+  onChangeAge,
+  onContinue,
+}) => {
   return (
     <ContentContainer>
-      <h1 style={{color: primary}}>HOME PLANET</h1>
+      <h1 style={{ color: primary }}>HOME PLANET</h1>
       <p>FIND YOUR WAY HOME</p>
-      <form>
-        <StyledInput placeholder={"Age..."}></StyledInput>
-        <StyledButton>{">"}</StyledButton>
-      </form>
+      <div>
+        <StyledInput
+          placeholder={"Age..."}
+          onChange={(e) => onChangeAge(parseInt(e.target.value))}
+        ></StyledInput>
+        <StyledButton
+          onClick={() => {
+            !!age && onContinue();
+          }}
+        >
+          {">"}
+        </StyledButton>
+      </div>
     </ContentContainer>
   );
 };
