@@ -15,9 +15,10 @@ const StyledStarfield = styled(Starfield)`
 type Props = {
   age: number;
   db: Firestore;
+  onBack: () => void;
 };
 
-export const PlanetsPage: FunctionComponent<Props> = ({ age, db }) => {
+export const PlanetsPage: FunctionComponent<Props> = ({ age, db, onBack }) => {
   const [planets, setPlanets] = useState<Planet[]>([]);
   const [showProfile, setShowProfile] = useState(false);
 
@@ -33,11 +34,6 @@ export const PlanetsPage: FunctionComponent<Props> = ({ age, db }) => {
   useEffect(() => {
     getData();
   }, []);
-
-  useEffect(() => {
-    console.log("LOG Stage 1: planets-page.tsx:39");
-    console.log("LOG showProfile: ", showProfile);
-  }, [showProfile]);
 
   const isHome = (offset: number) => age % planets.length === offset;
   const homePlanet = planets.find((p) => isHome(p.offset));
@@ -68,9 +64,9 @@ export const PlanetsPage: FunctionComponent<Props> = ({ age, db }) => {
 
   return (
     <>
-      <StyledStarfield />
+      {/* <StyledStarfield /> */}
       {showProfile && homePlanet ? (
-        <PlanetProfilePage planet={homePlanet} />
+        <PlanetProfilePage planet={homePlanet} onBack={onBack} />
       ) : (
         renderPlanetsPage()
       )}

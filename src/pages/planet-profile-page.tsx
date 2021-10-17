@@ -64,7 +64,7 @@ const StyledP = styled.p`
 
 const Symbol = styled(StyledH1)`
   font-size: 5.5rem;
-  font-family: Arial, sans-serif
+  font-family: Arial, sans-serif;
 `;
 
 const GlowingPlanet = styled.div<{ colors: string[] }>`
@@ -97,14 +97,18 @@ const ContainerShadow = styled.div`
   margin: 0;
 
   position: fixed;
-  box-shadow: 0rem -0.5rem 1rem 0.125rem #000000;
+  box-shadow: 0rem -0.5rem 1rem 0.2rem #000000;
 `;
 
 type Props = {
   planet: Planet;
+  onBack: () => void;
 };
 
-export const PlanetProfilePage: FunctionComponent<Props> = ({ planet }) => {
+export const PlanetProfilePage: FunctionComponent<Props> = ({
+  planet,
+  onBack,
+}) => {
   return (
     <ContentContainer>
       <ProfileContainer>
@@ -120,9 +124,13 @@ export const PlanetProfilePage: FunctionComponent<Props> = ({ planet }) => {
         </RightContainer>
       </ProfileContainer>
       <DescriptionContainer>
-        <StyledP><i>{planet.description}</i></StyledP>
+        <StyledP>
+          <i>{planet.description}</i>
+        </StyledP>
       </DescriptionContainer>
-      <StyledButton style={{marginBottom: "5rem"}}>{"<"}</StyledButton>
+      <StyledButton onClick={onBack} style={{ marginBottom: "5rem" }}>
+        {"<"}
+      </StyledButton>
       <ContainerShadow />
     </ContentContainer>
   );

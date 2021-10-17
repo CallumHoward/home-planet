@@ -58,7 +58,9 @@ export const App = () => {
     switch (page) {
       case "planets":
         if (age) {
-          return <PlanetsPage age={age} db={db} />;
+          return (
+            <PlanetsPage age={age} db={db} onBack={() => setCurrentPage("")} />
+          );
         }
         return renderDefaultPage();
       default:
