@@ -3,7 +3,7 @@ import { secondary } from "./styles";
 
 export const ContentContainer = styled.div`
   height: 100%;
-  margin: 0 25%;
+  margin: 0 20%;
 
   > * {
     margin-bottom: 2rem;
@@ -11,7 +11,6 @@ export const ContentContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
 `;

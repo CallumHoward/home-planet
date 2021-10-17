@@ -1,17 +1,25 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import { ContentContainer } from "../styles/page-styles";
-import { primary } from "../styles/styles";
+import { neon2, primary } from "../styles/styles";
 import { Planet } from "../types/content";
 
+const PlanetNameContainer = styled.div`
+  text-align: center;
+  font-size: 7em;
+`;
+
 const StyledH1 = styled.h1`
-  font-family: "xirodregular", Arial, sand-serif;
+  font-family: "xirodregular", Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
 
   margin: 0.5rem 1rem 1rem;
-  font-size: 4rem;
-  color: ${primary};
+  font-size: 3rem;
+  letter-spacing: 0.5rem;
+  color: #ffffff;
+
+  animation: ${neon2} 5s ease-in-out infinite alternate;
 `;
 
 const Subtitle = styled.h2`
@@ -22,12 +30,18 @@ const Subtitle = styled.h2`
 
 const ProfileContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
+`;
+
+const DescriptionContainer = styled.div`
+  display: flex;
 `;
 
 const LeftContainer = styled.div`
+  display: flex;
+  justify-content: center;
   margin: 2rem;
   flex: 1;
-  width: 100%;
 `;
 
 const RightContainer = styled.div`
@@ -37,15 +51,18 @@ const RightContainer = styled.div`
 `;
 
 const StyledP = styled.p`
-  line-height: 2rem;
+  text-align: justify;
+  line-height: 2.5rem;
+  font-size: 1.25rem;
 `;
 
-const Symbol = styled.div`
-  font-size: 4rem;
+const Symbol = styled(StyledH1)`
+  font-size: 5.5rem;
+  font-family: Arial, sans-serif
 `;
 
 const GlowingPlanet = styled.div<{ colors: string[] }>`
-  background: ${p => p.colors.length > 2 ? p.colors[2] : "#f8f"};
+  background: ${(p) => (p.colors.length > 2 ? p.colors[2] : "#f8f")};
   width: 300px;
   height: 300px;
   border-radius: 50%;
@@ -79,13 +96,18 @@ export const PlanetProfilePage: FunctionComponent<Props> = ({ planet }) => {
           <GlowingPlanet colors={planet.colors} />
         </LeftContainer>
         <RightContainer>
-          <Subtitle>YOU WILL BE MOVING TO</Subtitle>
-          <StyledH1>{planet.name}</StyledH1>
+          <b>
           <Symbol>{planet.symbol}</Symbol>
+          </b>
+          <PlanetNameContainer>
+            <StyledH1>{planet.name}</StyledH1>
+          </PlanetNameContainer>
           <Subtitle>{planet.subtitle}</Subtitle>
-          <StyledP>{planet.description}</StyledP>
         </RightContainer>
       </ProfileContainer>
+      <DescriptionContainer>
+        <StyledP>{planet.description}</StyledP>
+      </DescriptionContainer>
     </ContentContainer>
   );
 };

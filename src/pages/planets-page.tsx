@@ -68,7 +68,7 @@ export const PlanetsPage: FunctionComponent<Props> = ({ age, db }) => {
 
   return (
     <>
-      <StyledStarfield />
+      {/* <StyledStarfield /> */}
       {showProfile && homePlanet ? (
         <PlanetProfilePage planet={homePlanet} />
       ) : (

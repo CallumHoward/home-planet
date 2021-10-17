@@ -5,7 +5,7 @@ import {
   StyledButton,
   StyledInput,
 } from "../styles/page-styles";
-import { primary } from "../styles/styles";
+import { neon2, primary } from "../styles/styles";
 
 const StyledH1 = styled.h1`
   font-family: "xirodregular", Arial, sand-serif;
@@ -14,7 +14,9 @@ const StyledH1 = styled.h1`
 
   font-size: 8rem;
   letter-spacing: 0.5rem;
-  color: ${primary};
+  color: #ffffff;
+
+  animation: ${neon2} 5s ease-in-out infinite alternate;
 `;
 
 const StyledP = styled.p`
