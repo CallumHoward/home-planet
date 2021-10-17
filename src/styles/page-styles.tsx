@@ -4,7 +4,7 @@ import { secondary } from "./styles";
 export const ContentContainer = styled.div`
   min-height: 100%;
 
-  padding: 20%;
+  padding: 5rem 20%;
   @media only screen and (max-width: 768px) {
     padding: 1rem;
   }
@@ -26,6 +26,11 @@ export const StyledInput = styled.input`
   margin: 2rem 1rem;
   padding: 0.5rem 1rem;
 
+  @media only screen and (max-width: 768px) {
+    font-size: 1rem;
+    margin: 1rem;
+  }
+
   border: 2px solid ${secondary};
   background: black;
   color: white;
@@ -37,6 +42,12 @@ export const StyledButton = styled.button`
   height: 2.5rem;
   width: 2.5rem;
   margin: 2rem 1rem;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 1rem;
+    margin: 1rem;
+  }
+
   padding: 0.5rem;
   box-sizing: content-box;
 

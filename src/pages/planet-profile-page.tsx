@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
-import { ContentContainer } from "../styles/page-styles";
+import { ContentContainer, StyledButton } from "../styles/page-styles";
 import { neon2, primary } from "../styles/styles";
 import { Planet } from "../types/content";
 
@@ -44,14 +44,16 @@ const DescriptionContainer = styled.div`
 const LeftContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin: 1rem;
+  margin: 1rem 4rem;
   flex: 1;
 `;
 
 const RightContainer = styled.div`
-  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 4rem;
   flex: 1;
-  width: 30rem;
+  flex-grow: 1;
 `;
 
 const StyledP = styled.p`
@@ -118,8 +120,9 @@ export const PlanetProfilePage: FunctionComponent<Props> = ({ planet }) => {
         </RightContainer>
       </ProfileContainer>
       <DescriptionContainer>
-        <StyledP>{planet.description}</StyledP>
+        <StyledP><i>{planet.description}</i></StyledP>
       </DescriptionContainer>
+      <StyledButton style={{marginBottom: "5rem"}}>{"<"}</StyledButton>
       <ContainerShadow />
     </ContentContainer>
   );
