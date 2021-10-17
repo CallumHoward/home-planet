@@ -54,7 +54,6 @@ export const PlanetsPage: FunctionComponent<Props> = ({ age, db, onBack }) => {
       <StyledButton
         onClick={() => {
           setShowProfile(true);
-          console.log("click");
         }}
       >
         {">"}
