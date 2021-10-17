@@ -9,7 +9,7 @@ import { PlanetProfilePage } from "./planet-profile-page";
 const StyledStarfield = styled(Starfield)`
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
 `;
 
 type Props = {
@@ -68,7 +68,7 @@ export const PlanetsPage: FunctionComponent<Props> = ({ age, db }) => {
 
   return (
     <>
-      {/* <StyledStarfield /> */}
+      <StyledStarfield />
       {showProfile && homePlanet ? (
         <PlanetProfilePage planet={homePlanet} />
       ) : (

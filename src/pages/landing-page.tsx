@@ -17,6 +17,7 @@ const StyledH1 = styled.h1`
   color: #ffffff;
 
   animation: ${neon2} 5s ease-in-out infinite alternate;
+  animation-play-state: paused;
 `;
 
 const StyledP = styled.p`

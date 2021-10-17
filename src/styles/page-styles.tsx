@@ -2,8 +2,12 @@ import styled from "styled-components";
 import { secondary } from "./styles";
 
 export const ContentContainer = styled.div`
-  height: 100%;
-  margin: 0 20%;
+  min-height: 100%;
+
+  padding: 20%;
+  @media only screen and (max-width: 768px) {
+    padding: 1rem;
+  }
 
   > * {
     margin-bottom: 2rem;

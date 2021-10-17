@@ -15,11 +15,15 @@ const StyledH1 = styled.h1`
   font-style: normal;
 
   margin: 0.5rem 1rem 1rem;
-  font-size: 3rem;
+  font-size: 4rem;
+  @media only screen and (max-width: 768px) {
+    font-size: 2rem;
+  }
   letter-spacing: 0.5rem;
   color: #ffffff;
 
   animation: ${neon2} 5s ease-in-out infinite alternate;
+  animation-play-state: paused;
 `;
 
 const Subtitle = styled.h2`
@@ -40,12 +44,12 @@ const DescriptionContainer = styled.div`
 const LeftContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin: 2rem;
+  margin: 1rem;
   flex: 1;
 `;
 
 const RightContainer = styled.div`
-  margin: 2rem;
+  margin: 1rem;
   flex: 1;
   width: 30rem;
 `;
@@ -84,6 +88,16 @@ const GlowingPlanet = styled.div<{ colors: string[] }>`
     10px 0 80px ${(p) => p.colors[1]};
 `;
 
+const ContainerShadow = styled.div`
+  width: 100vw;
+  height: 0.5rem;
+  bottom: -0.5rem;
+  margin: 0;
+
+  position: fixed;
+  box-shadow: 0rem -0.5rem 1rem 0.125rem #000000;
+`;
+
 type Props = {
   planet: Planet;
 };
@@ -96,9 +110,7 @@ export const PlanetProfilePage: FunctionComponent<Props> = ({ planet }) => {
           <GlowingPlanet colors={planet.colors} />
         </LeftContainer>
         <RightContainer>
-          <b>
           <Symbol>{planet.symbol}</Symbol>
-          </b>
           <PlanetNameContainer>
             <StyledH1>{planet.name}</StyledH1>
           </PlanetNameContainer>
@@ -108,6 +120,7 @@ export const PlanetProfilePage: FunctionComponent<Props> = ({ planet }) => {
       <DescriptionContainer>
         <StyledP>{planet.description}</StyledP>
       </DescriptionContainer>
+      <ContainerShadow />
     </ContentContainer>
   );
 };
