@@ -12,8 +12,12 @@ const StyledH1 = styled.h1`
   margin: 0.5rem 1rem 1rem;
   font-size: 4rem;
   color: ${primary};
-  -webkit-box-shadow: 2px 1px 50px -6px #ffffff;
-  box-shadow: 2px 1px 50px -6px #ffffff;
+`;
+
+const Subtitle = styled.h2`
+  margin: 0.5rem 1rem 1rem;
+  font-size: 1.5rem;
+  color: ${primary};
 `;
 
 const ProfileContainer = styled.div`
@@ -32,55 +36,53 @@ const RightContainer = styled.div`
   width: 30rem;
 `;
 
-const Caption = styled(StyledH1)`
-  font-size: 2rem;
-`;
-
 const StyledP = styled.p`
   line-height: 2rem;
 `;
 
-const SaturnSymbolUrl =
-  "https://upload.wikimedia.org/wikipedia/commons/archive/7/74/20061003140009%21Saturn_symbol.svg";
-
-const SvgSymbol = styled.div`
-  width: 100px;
-  height: 100px;
-  background-color: white;
-  -webkit-mask: url(${SaturnSymbolUrl}) no-repeat center;
-  mask: url(logo.svg) no-repeat center;
+const Symbol = styled.div`
+  font-size: 4rem;
 `;
 
-const GlowingPlanet = styled.div`
-  background: #f8f;
+const GlowingPlanet = styled.div<{ colors: string[] }>`
+  background: ${p => p.colors.length > 2 ? p.colors[2] : "#f8f"};
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  box-shadow: inset 0 0 50px #fff, /* inner white */ inset 20px 0 80px #f0f,
-    /* inner left magenta short */ inset -20px 0 80px #0ff,
-    /* inner right cyan short */ inset 20px 0 300px #f0f,
-    /* inner left magenta broad */ inset -20px 0 300px #0ff,
-    /* inner right cyan broad */ 0 0 50px #fff,
-    /* outer white */ -10px 0 80px #f0f,
-    /* outer left magenta */ 10px 0 80px #0ff; /* outer right cyan */
+  // inner glow
+  box-shadow: inset 0 0 50px #ffffff,
+    // inner left primary short
+    inset 20px 0 80px ${(p) => p.colors[0]},
+    // inner right secondary short
+    inset -20px 0 80px ${(p) => p.colors[1]},
+    // inner left primary broad
+    inset 20px 0 300px ${(p) => p.colors[0]},
+    // inner right secondary broad
+    inset -20px 0 300px ${(p) => p.colors[1]},
+    // outer glow
+    0 0 50px ${(p) => (p.colors.length >= 2 ? p.colors[2] : "#f0f")},
+    // outer left primary
+    -10px 0 80px ${(p) => p.colors[0]},
+    // outer right secondary
+    10px 0 80px ${(p) => p.colors[1]};
 `;
 
 type Props = {
   planet: Planet;
 };
 
-export const PlanetProfilePage: FunctionComponent<Props> = ({planet}) => {
+export const PlanetProfilePage: FunctionComponent<Props> = ({ planet }) => {
   return (
     <ContentContainer>
       <ProfileContainer>
         <LeftContainer>
-          {/* <img src="assets/saturn.png" /> */}
-          <GlowingPlanet />
+          <GlowingPlanet colors={planet.colors} />
         </LeftContainer>
         <RightContainer>
-          <Caption>You will be moving to</Caption>
+          <Subtitle>YOU WILL BE MOVING TO</Subtitle>
           <StyledH1>{planet.name}</StyledH1>
-          <SvgSymbol />
+          <Symbol>{planet.symbol}</Symbol>
+          <Subtitle>{planet.subtitle}</Subtitle>
           <StyledP>{planet.description}</StyledP>
         </RightContainer>
       </ProfileContainer>
