@@ -32,6 +32,7 @@ export const StyledInput = styled.input`
   }
 
   border: 2px solid ${secondary};
+  border-radius: 0;
   background: black;
   color: white;
 `;
