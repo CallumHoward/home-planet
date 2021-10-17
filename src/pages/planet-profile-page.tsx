@@ -5,6 +5,10 @@ import { primary } from "../styles/styles";
 import { Planet } from "../types/content";
 
 const StyledH1 = styled.h1`
+  font-family: "xirodregular", Arial, sand-serif;
+  font-weight: normal;
+  font-style: normal;
+
   margin: 0.5rem 1rem 1rem;
   font-size: 4rem;
   color: ${primary};

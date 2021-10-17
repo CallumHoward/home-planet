@@ -1,9 +1,17 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
-import { ContentContainer, StyledButton, StyledInput } from "../styles/page-styles";
+import {
+  ContentContainer,
+  StyledButton,
+  StyledInput,
+} from "../styles/page-styles";
 import { primary } from "../styles/styles";
 
 const StyledH1 = styled.h1`
+  font-family: "xirodregular", Arial, sand-serif;
+  font-weight: normal;
+  font-style: normal;
+
   font-size: 8rem;
   letter-spacing: 0.5rem;
   color: ${primary};
