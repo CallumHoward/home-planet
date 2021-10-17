@@ -1,7 +1,8 @@
 export type Planet = {
-  name: string;
+  colors: string[];
   description: string;
-  primaryColor: string;
-  secondaryColor: string;
   offset: number;
+  name: string;
+  subtitle: string;
+  symbol: string;
 };
