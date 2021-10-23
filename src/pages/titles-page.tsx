@@ -7,11 +7,15 @@ const displayTime = 5;
 
 const StyledH1 = styled.h1`
   font-size: 2rem;
-  color: white;
-  opacity: 0%;
-
+  @media only screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
+  text-transform: uppercase;
   display: inline-block;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: forgottenfuturistregular, Arial, Helvetica, sans-serif;
+  letter-spacing: 0.5rem;
+
+  opacity: 0%;
   animation: ${fadeInAndOut} ${displayTime}s ease-in-out;
 `;
 

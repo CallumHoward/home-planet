@@ -29,6 +29,9 @@ const StyledP = styled.p`
   @media only screen and (max-width: 768px) {
     font-size: 1rem;
   }
+  font-family: forgottenfuturistregular, Arial, Helvetica, sans-serif;
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
 `;
 
 type Props = {
