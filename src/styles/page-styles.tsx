@@ -13,6 +13,7 @@ export const ContentContainer = styled.div`
     margin-bottom: 2rem;
   }
 
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;

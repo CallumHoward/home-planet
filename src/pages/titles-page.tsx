@@ -39,7 +39,7 @@ export const TitlesPage: FunctionComponent<Props> = ({ onNext }) => {
   }, [currentTitle]);
 
   return (
-    <ContentContainer>
+    <ContentContainer style={{justifyContent: "center"}}>
       <StyledH1 key={currentTitle}>{titlesContent[currentTitle]}</StyledH1>
     </ContentContainer>
   );
