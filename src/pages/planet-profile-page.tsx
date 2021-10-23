@@ -67,8 +67,9 @@ const Symbol = styled(StyledH1)`
   font-family: Arial, sans-serif;
 `;
 
-const GlowingPlanet = styled.div<{ colors: string[] }>`
-  background: ${(p) => (p.colors.length > 2 ? p.colors[2] : "#f8f")};
+export const GlowingPlanet = styled.div<{ colors: string[] }>`
+  color: ${(p) => p.colors[0]};
+  background: ${(p) => (p.colors.length > 2 ? p.colors[2] : p.colors[1])};
   width: 300px;
   height: 300px;
   border-radius: 50%;
@@ -77,17 +78,17 @@ const GlowingPlanet = styled.div<{ colors: string[] }>`
     // inner left primary short
     inset 20px 0 80px ${(p) => p.colors[0]},
     // inner right secondary short
-    inset -20px 0 80px ${(p) => p.colors[1]},
+    inset -20px 0 80px ${(p) => p.colors.length >= 3 ? p.colors[3] : p.colors[1]},
     // inner left primary broad
-    inset 20px 0 300px ${(p) => p.colors[0]},
+    inset 20px 0 300px ${(p) => p.colors[1]},
     // inner right secondary broad
-    inset -20px 0 300px ${(p) => p.colors[1]},
+    inset -20px 0 300px ${(p) => p.colors.length >= 2 ? p.colors[2] : p.colors[1]},
     // outer glow
-    0 0 50px ${(p) => (p.colors.length >= 2 ? p.colors[2] : "#f0f")},
+    0 0 50px ${(p) => (p.colors[1])},
     // outer left primary
     -10px 0 80px ${(p) => p.colors[0]},
     // outer right secondary
-    10px 0 80px ${(p) => p.colors[1]};
+    10px 0 80px ${(p) => p.colors[0]};
 `;
 
 const ContainerShadow = styled.div`

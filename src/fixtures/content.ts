@@ -4,7 +4,7 @@ import { Planet } from "../types/content";
 export const getInitialContent = () => {
   const content: Planet[] = [
     {
-      colors: ["#2600ff", "#fff200"],
+      colors: ["#2600ff", "#483E7E", "#fff200", "#483E7E"],
       description:
         "You will be moving to Mercury. As the closest planet to the Sun, Mercury is seen as the mediator between humanity and the gods. Named after the Roman fleet-footed messenger of the Gods renowned for his swiftness, Mercury quickly orbits the Sun in just 88 days. It travels through space faster than any other planet, moving at nearly 47 kilometres per second. On Mercury you will enjoy speaking and interacting with others with lightness and ease. Mercury brings together two worlds, it unites day with night, spirit with physicality. On Mercury have fun exploring the different ways you are perceived by others and how others perceive you.",
       offset: 0,
@@ -13,13 +13,13 @@ export const getInitialContent = () => {
       symbol: "☿",
     },
     {
-      colors: ["#4b0096", "#0b002e", "#d9ff00"],
+      colors: ["#4b0096", "#d9ff00", "#0b002e", "#2600ff"],
       description:
         "You will be moving to Pluto. This dwarf planet, the largest in our solar system, was considered the ninth and most distant planet from the Sun. It sits at the outermost frontier of our solar system and remains shrouded in mystery. It is one of the largest known members of the Kuiper Belt, a shadowy zone beyond the orbit of Neptune populated by icy bodies. Named after the Roman god of the Underworld, Pluto represents power. Its discovery in 1930 coincided with events such as the Great Depression, World War II and the rise of Nazi Germany. To the Romans, Pluto was also known as “The Wealthy One” or the “Giver of Wealth”. On this dark and distant planet, if all were to be lost — consider what you have, your resources, and what you value most.",
       offset: 1,
       name: "Pluto",
       subtitle: "Gate of Hades",
-      symbol: "?",
+      symbol: "♇",
     },
     {
       colors: ["#ffffff", "#d6d6d6"],
@@ -69,7 +69,7 @@ export const getInitialContent = () => {
       offset: 7,
       name: "Eris",
       subtitle: "The Disruptor",
-      symbol: "?",
+      symbol: "♁",
     },
     {
       colors: ["#d9ff00", "#ff4800"],
