@@ -4,6 +4,21 @@ export const primary = "#F872D1";
 export const secondary = "#952DE6";
 export const secondaryGlow = "#FFAAFF";
 
+export const fadeInAndOut = keyframes`
+  0% {
+    opacity: 0%;
+  }
+  25% {
+    opacity: 100%;
+  }
+  75% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
+`;
+
 export const neon2 = keyframes`
   from {
     text-shadow: 0 0 10px ${secondaryGlow},

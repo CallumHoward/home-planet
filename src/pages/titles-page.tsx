@@ -1,75 +1,46 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import styled from "styled-components";
 import { ContentContainer } from "../styles/page-styles";
+import { fadeInAndOut } from "../styles/styles";
 
-type Props = {};
+const displayTime = 5;
 
 const StyledH1 = styled.h1`
-  font-size: 4rem;
+  font-size: 2rem;
   color: white;
+  opacity: 0%;
 
-  .fade-in-text {
-    display: inline-block;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 150px;
-    color: white;
-    animation: fadeIn linear 7s;
-    -webkit-animation: fadeIn linear 7s;
-    -moz-animation: fadeIn linear 7s;
-    -o-animation: fadeIn linear 7s;
-    -ms-animation: fadeIn linear 7s;
-  }
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @-moz-keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @-webkit-keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @-o-keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @-ms-keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  animation: ${fadeInAndOut} ${displayTime}s ease-in-out;
 `;
 
-export const TitlesPage: FunctionComponent<Props> = () => {
+const titlesContent = [
+  "Each year...",
+  "Your spirit takes a journey...",
+  "To another planet...",
+];
+
+type Props = {
+  onNext: () => void;
+};
+
+export const TitlesPage: FunctionComponent<Props> = ({ onNext }) => {
+  const [currentTitle, setCurrentTitle] = useState(0);
+
+  useEffect(() => {
+    if (currentTitle < titlesContent.length) {
+      setTimeout(() => {
+        setCurrentTitle(currentTitle + 1);
+      }, displayTime * 1000);
+    } else {
+      onNext();
+    }
+  }, [currentTitle]);
+
   return (
     <ContentContainer>
-      <StyledH1>It's time to to your astrological home...</StyledH1>
+      <StyledH1 key={currentTitle}>{titlesContent[currentTitle]}</StyledH1>
     </ContentContainer>
   );
 };

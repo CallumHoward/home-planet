@@ -14,6 +14,7 @@ const StyledApp = styled.div`
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
+import { TitlesPage } from "./pages/titles-page";
 // import { upsertDb } from "./fixtures/content";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -37,7 +38,7 @@ const db = getFirestore(app);
 const analytics = getAnalytics(app);
 
 export const App = () => {
-  const [currentPage, setCurrentPage] = useState("");
+  const [currentPage, setCurrentPage] = useState("titles");
   const [age, setAge] = useState<number | undefined>();
 
   useEffect(() => {
@@ -63,6 +64,10 @@ export const App = () => {
           );
         }
         return renderDefaultPage();
+      case "titles":
+        return (
+          <TitlesPage onNext={() => setCurrentPage("landing")} />
+        );
       default:
         return renderDefaultPage();
     }
