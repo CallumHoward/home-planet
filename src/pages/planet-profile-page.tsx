@@ -29,9 +29,9 @@ const StyledH1 = styled.h1`
 const StyledSvg = styled.img`
   height: 5.5rem;
   filter: drop-shadow(0px 0px 10px ${secondaryGlow})
-    drop-shadow(0 0 20px ${secondaryGlow})
-    drop-shadow(0 0 70px ${secondary}) drop-shadow(0 0 80px ${secondary})
-    drop-shadow(0 0 100px ${secondary}) drop-shadow(0px 0px 150px ${secondary});
+    drop-shadow(0 0 20px ${secondaryGlow}) drop-shadow(0 0 70px ${secondary})
+    drop-shadow(0 0 80px ${secondary}) drop-shadow(0 0 100px ${secondary})
+    drop-shadow(0px 0px 150px ${secondary});
 `;
 
 const Subtitle = styled.h2`
@@ -42,7 +42,7 @@ const Subtitle = styled.h2`
 
 const ProfileContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 `;
 
 const DescriptionContainer = styled.div`
