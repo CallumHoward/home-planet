@@ -19,7 +19,7 @@ export const getInitialContent = () => {
       offset: 1,
       name: "Pluto",
       subtitle: "Gate of Hades",
-      symbol: "♇",
+      symbol: "pluto.svg",
     },
     {
       colors: ["#ffffff", "#d6d6d6"],
@@ -37,7 +37,7 @@ export const getInitialContent = () => {
       offset: 3,
       name: "Ceres",
       subtitle: "The Root",
-      symbol: "?",
+      symbol: "ceres.svg",
     },
     {
       colors: ["#5e24ff", "#ffcc00"],

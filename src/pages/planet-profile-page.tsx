@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import { ContentContainer, StyledButton } from "../styles/page-styles";
-import { neon2, primary } from "../styles/styles";
+import { neon2, primary, secondary, secondaryGlow } from "../styles/styles";
 import { Planet } from "../types/content";
 
 const PlanetNameContainer = styled.div`
@@ -24,6 +24,14 @@ const StyledH1 = styled.h1`
 
   animation: ${neon2} 5s ease-in-out infinite alternate;
   animation-play-state: paused;
+`;
+
+const StyledSvg = styled.img`
+  height: 5.5rem;
+  filter: drop-shadow(0px 0px 10px ${secondaryGlow})
+    drop-shadow(0 0 20px ${secondaryGlow})
+    drop-shadow(0 0 70px ${secondary}) drop-shadow(0 0 80px ${secondary})
+    drop-shadow(0 0 100px ${secondary}) drop-shadow(0px 0px 150px ${secondary});
 `;
 
 const Subtitle = styled.h2`
@@ -78,13 +86,15 @@ export const GlowingPlanet = styled.div<{ colors: string[] }>`
     // inner left primary short
     inset 20px 0 80px ${(p) => p.colors[0]},
     // inner right secondary short
-    inset -20px 0 80px ${(p) => p.colors.length >= 3 ? p.colors[3] : p.colors[1]},
+    inset -20px 0 80px ${(p) =>
+        p.colors.length >= 3 ? p.colors[3] : p.colors[1]},
     // inner left primary broad
     inset 20px 0 300px ${(p) => p.colors[1]},
     // inner right secondary broad
-    inset -20px 0 300px ${(p) => p.colors.length >= 2 ? p.colors[2] : p.colors[1]},
+    inset -20px 0 300px ${(p) =>
+        p.colors.length >= 2 ? p.colors[2] : p.colors[1]},
     // outer glow
-    0 0 50px ${(p) => (p.colors[1])},
+    0 0 50px ${(p) => p.colors[1]},
     // outer left primary
     -10px 0 80px ${(p) => p.colors[0]},
     // outer right secondary
@@ -117,7 +127,16 @@ export const PlanetProfilePage: FunctionComponent<Props> = ({
           <GlowingPlanet colors={planet.colors} />
         </LeftContainer>
         <RightContainer>
-          <Symbol>{planet.symbol}</Symbol>
+          {planet.symbol.endsWith(".svg") ? (
+            <Symbol>
+              <StyledSvg
+                src={`assets/planets/${planet.symbol}`}
+                alt="planet-symbol"
+              />
+            </Symbol>
+          ) : (
+            <Symbol>{planet.symbol}</Symbol>
+          )}
           <PlanetNameContainer>
             <StyledH1>{planet.name}</StyledH1>
           </PlanetNameContainer>
