@@ -155,16 +155,16 @@ This typically indicates that your device does not have a healthy Internet conne
 `,PA=pe.img`
   height: 5.5rem;
   filter: drop-shadow(0px 0px 10px ${In})
-    drop-shadow(0 0 20px ${In})
-    drop-shadow(0 0 70px ${Ae}) drop-shadow(0 0 80px ${Ae})
-    drop-shadow(0 0 100px ${Ae}) drop-shadow(0px 0px 150px ${Ae});
+    drop-shadow(0 0 20px ${In}) drop-shadow(0 0 70px ${Ae})
+    drop-shadow(0 0 80px ${Ae}) drop-shadow(0 0 100px ${Ae})
+    drop-shadow(0px 0px 150px ${Ae});
 `,RA=pe.h2`
   margin: 0.5rem 1rem 1rem;
   font-size: 1.5rem;
   color: ${a0};
 `,LA=pe.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 `,MA=pe.div`
   display: flex;
 `,FA=pe.div`
