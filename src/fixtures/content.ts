@@ -1,5 +1,5 @@
 import { doc, setDoc, Firestore } from "firebase/firestore";
-import { Planet } from "../types/content";
+import type { Planet } from "../types/content";
 
 export const getInitialContent = () => {
   const content: Planet[] = [

@@ -3,7 +3,7 @@ import { ContentContainer, StyledButton } from "../styles/page-styles";
 import Starfield from "../components/starfield";
 import styled from "styled-components";
 import { collection, Firestore, getDocs } from "firebase/firestore";
-import { Planet } from "../types/content";
+import type { Planet } from "../types/content";
 import { PlanetProfilePage } from "./planet-profile-page";
 
 const StyledStarfield = styled(Starfield)`

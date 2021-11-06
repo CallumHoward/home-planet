@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import { ContentContainer, StyledButton } from "../styles/page-styles";
 import { neon2, primary, secondary, secondaryGlow } from "../styles/styles";
-import { Planet } from "../types/content";
+import type { Planet } from "../types/content";
 
 const PlanetNameContainer = styled.div`
   text-align: center;
