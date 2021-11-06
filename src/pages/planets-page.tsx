@@ -4,7 +4,7 @@ import Starfield from "../components/starfield";
 import styled from "styled-components";
 import { collection, Firestore, getDocs } from "firebase/firestore";
 import type { Planet } from "../types/content";
-import { PlanetProfilePage } from "./planet-profile-page";
+import { GlowingPlanet, PlanetProfilePage } from "./planet-profile-page";
 
 const StyledStarfield = styled(Starfield)`
   width: 100vw;
@@ -45,9 +45,13 @@ export const PlanetsPage: FunctionComponent<Props> = ({ age, db, onBack }) => {
       <ul>
         {planets
           .sort((lhs, rhs) => lhs.offset - rhs.offset)
-          .map(({ name, offset }) => {
+          .map(({ name, offset, colors }) => {
             return (
-              <li key={offset}>{isHome(offset) ? <b>{name}</b> : name}</li>
+              <li key={offset}>
+                {isHome(offset) ? <b>{name}</b> : name}
+                <GlowingPlanet colors={colors} scale={0.1} />
+              </li>
+              // {/* <li key={offset}></li> */}
             );
           })}
       </ul>
