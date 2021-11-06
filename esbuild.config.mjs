@@ -8,6 +8,7 @@ esbuild
     entryPoints: ["src/index.tsx"],
     bundle: true,
     outfile: "www/dist/bundle.js",
+    outbase: "home-planet",
     minify: !isDevServer,
     sourcemap: true,
     incremental: isDevServer,
