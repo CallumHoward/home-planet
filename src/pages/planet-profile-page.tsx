@@ -75,30 +75,32 @@ const Symbol = styled(StyledH1)`
   font-family: Arial, sans-serif;
 `;
 
-export const GlowingPlanet = styled.div<{ colors: string[] }>`
+export const GlowingPlanet = styled.div<{ colors: string[]; scale: number }>`
   color: ${(p) => p.colors[0]};
   background: ${(p) => (p.colors.length > 2 ? p.colors[2] : p.colors[1])};
-  width: 300px;
-  height: 300px;
+  width: ${(p) => p.scale * 300}px;
+  height: ${(p) => p.scale * 300}px;
   border-radius: 50%;
   // inner glow
-  box-shadow: inset 0 0 50px #ffffff,
+  box-shadow: inset 0 0 ${(p) => p.scale * 50}px #ffffff,
     // inner left primary short
-    inset 20px 0 80px ${(p) => p.colors[0]},
+    inset ${(p) => p.scale * 20}px 0 ${(p) => p.scale * 80}px
+      ${(p) => p.colors[0]},
     // inner right secondary short
-    inset -20px 0 80px ${(p) =>
-        p.colors.length >= 3 ? p.colors[3] : p.colors[1]},
+    inset ${(p) => p.scale * -20}px 0 ${(p) => p.scale * 80}px
+      ${(p) => (p.colors.length >= 3 ? p.colors[3] : p.colors[1])},
     // inner left primary broad
-    inset 20px 0 300px ${(p) => p.colors[1]},
+    inset ${(p) => p.scale * 20}px 0 ${(p) => p.scale * 300}px
+      ${(p) => p.colors[1]},
     // inner right secondary broad
-    inset -20px 0 300px ${(p) =>
-        p.colors.length >= 2 ? p.colors[2] : p.colors[1]},
+    inset ${(p) => p.scale * -20}px 0 ${(p) => p.scale * 300}px
+      ${(p) => (p.colors.length >= 2 ? p.colors[2] : p.colors[1])},
     // outer glow
-    0 0 50px ${(p) => p.colors[1]},
+    0 0 ${(p) => p.scale * 50}px ${(p) => p.colors[1]},
     // outer left primary
-    -10px 0 80px ${(p) => p.colors[0]},
+    ${(p) => p.scale * -10}px 0 ${(p) => p.scale * 80}px ${(p) => p.colors[0]},
     // outer right secondary
-    10px 0 80px ${(p) => p.colors[0]};
+    ${(p) => p.scale * 10}px 0 ${(p) => p.scale * 80}px ${(p) => p.colors[0]};
 `;
 
 const ContainerShadow = styled.div`
@@ -124,7 +126,7 @@ export const PlanetProfilePage: FunctionComponent<Props> = ({
     <ContentContainer>
       <ProfileContainer>
         <LeftContainer>
-          <GlowingPlanet colors={planet.colors} />
+          <GlowingPlanet colors={planet.colors} scale={1} />
         </LeftContainer>
         <RightContainer>
           {planet.symbol.endsWith(".svg") ? (
