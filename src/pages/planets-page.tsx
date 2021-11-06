@@ -5,11 +5,28 @@ import styled from "styled-components";
 import { collection, Firestore, getDocs } from "firebase/firestore";
 import type { Planet } from "../types/content";
 import { GlowingPlanet, PlanetProfilePage } from "./planet-profile-page";
+import { circle, sideToSide } from "../styles/styles";
 
 const StyledStarfield = styled(Starfield)`
   width: 100vw;
   height: 100vh;
   position: fixed;
+`;
+
+const Gravity = styled.div<{ offset: number }>`
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -200px;
+  animation: ${sideToSide} 3s infinite ${(p) => p.offset}s ease-in-out alternate;
+`;
+
+const Satellite = styled(GlowingPlanet)<{ offset: number }>`
+  margin-left: -200px;
+  transform-origin: 200px center;
+  animation: ${circle} 6s infinite ${(p) => p.offset}s linear;
 `;
 
 type Props = {
@@ -42,19 +59,18 @@ export const PlanetsPage: FunctionComponent<Props> = ({ age, db, onBack }) => {
     <ContentContainer>
       <h1>Planets Page</h1>
       <p>Age is {age}</p>
-      <ul>
+      <div>
         {planets
           .sort((lhs, rhs) => lhs.offset - rhs.offset)
-          .map(({ name, offset, colors }) => {
+          .map(({ offset, colors }) => {
+            const timeOffset = -offset / 2;
             return (
-              <li key={offset}>
-                {isHome(offset) ? <b>{name}</b> : name}
-                <GlowingPlanet colors={colors} scale={0.1} />
-              </li>
-              // {/* <li key={offset}></li> */}
+              <Gravity offset={timeOffset}>
+                <Satellite colors={colors} scale={0.1} offset={timeOffset} />
+              </Gravity>
             );
           })}
-      </ul>
+      </div>
       <StyledButton
         onClick={() => {
           setShowProfile(true);

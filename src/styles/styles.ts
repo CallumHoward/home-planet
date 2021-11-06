@@ -41,3 +41,15 @@ export const neon2 = keyframes`
     0 0 75px ${secondary};
   }
 `;
+
+export const sideToSide = keyframes`
+  to {
+    transform: translateX(400px);
+  }
+`;
+
+export const circle = keyframes`
+  to {
+    transform: rotate(1turn);
+  }
+`;
