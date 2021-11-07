@@ -5,7 +5,13 @@ import styled from "styled-components";
 import { collection, Firestore, getDocs } from "firebase/firestore";
 import type { Planet } from "../types/content";
 import { GlowingPlanet, PlanetProfilePage } from "./planet-profile-page";
-import { circle, sideToSide } from "../styles/styles";
+import { circle, sideToSide, zoom } from "../styles/styles";
+
+const TRANSITION_DELAY = 5;
+
+const PlanetsContainer = styled.div`
+  animation: ${zoom} 2s ease-in ${TRANSITION_DELAY}s;
+`;
 
 const StyledStarfield = styled(Starfield)`
   width: 100vw;
@@ -20,13 +26,13 @@ const Gravity = styled.div<{ offset: number }>`
   top: 50%;
   left: 50%;
   margin-left: -200px;
-  animation: ${sideToSide} 3s infinite ${(p) => p.offset}s ease-in-out alternate;
+  animation: ${sideToSide} 6s infinite ${(p) => p.offset}s ease-in-out alternate;
 `;
 
 const Satellite = styled(GlowingPlanet)<{ offset: number }>`
   margin-left: -200px;
   transform-origin: 200px center;
-  animation: ${circle} 6s infinite ${(p) => p.offset}s linear;
+  animation: ${circle} 12s infinite ${(p) => p.offset}s linear;
 `;
 
 type Props = {
@@ -50,6 +56,10 @@ export const PlanetsPage: FunctionComponent<Props> = ({ age, db, onBack }) => {
 
   useEffect(() => {
     getData();
+    console.info("Reading data");
+    setTimeout(() => {
+      setShowProfile(true);
+    }, TRANSITION_DELAY * 1000);
   }, []);
 
   const isHome = (offset: number) => age % planets.length === offset;
@@ -57,20 +67,18 @@ export const PlanetsPage: FunctionComponent<Props> = ({ age, db, onBack }) => {
 
   const renderPlanetsPage = () => (
     <ContentContainer>
-      <h1>Planets Page</h1>
-      <p>Age is {age}</p>
-      <div>
+      <PlanetsContainer>
         {planets
           .sort((lhs, rhs) => lhs.offset - rhs.offset)
           .map(({ offset, colors }) => {
-            const timeOffset = -offset / 2;
+            const timeOffset = -offset;
             return (
               <Gravity offset={timeOffset}>
                 <Satellite colors={colors} scale={0.1} offset={timeOffset} />
               </Gravity>
             );
           })}
-      </div>
+      </PlanetsContainer>
       <StyledButton
         onClick={() => {
           setShowProfile(true);

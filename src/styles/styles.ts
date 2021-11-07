@@ -53,3 +53,9 @@ export const circle = keyframes`
     transform: rotate(1turn);
   }
 `;
+
+export const zoom = keyframes`
+  to {
+    transform: scale(100);
+  }
+`
