@@ -171,8 +171,11 @@ This typically indicates that your device does not have a healthy Internet conne
     drop-shadow(0 0 80px ${Ae}) drop-shadow(0 0 100px ${Ae})
     drop-shadow(0px 0px 150px ${Ae});
 `,jA=ue.h2`
-  margin: 0.5rem 1rem 1rem;
+  font-family: forgottenfuturistregular, Arial, Helvetica, sans-serif;
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
   font-size: 1.5rem;
+  margin: 0.5rem 1rem 1rem;
   color: ${a0};
 `,zA=ue.div`
   display: flex;
