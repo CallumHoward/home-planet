@@ -58,4 +58,4 @@ export const zoom = keyframes`
   to {
     transform: scale(100);
   }
-`
+`;

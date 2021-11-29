@@ -7,10 +7,12 @@ import type { Planet } from "../types/content";
 import { GlowingPlanet, PlanetProfilePage } from "./planet-profile-page";
 import { circle, sideToSide, zoom } from "../styles/styles";
 
-const TRANSITION_DELAY = 5;
+const TRANSITION_DELAY = 10;
+const TRANSITION_DURATION = 5;
 
 const PlanetsContainer = styled.div`
-  animation: ${zoom} 2s ease-in ${TRANSITION_DELAY}s;
+  margin-top: 50%;
+  animation: ${zoom} ${TRANSITION_DURATION}s ease-in ${TRANSITION_DELAY}s;
 `;
 
 const StyledStarfield = styled(Starfield)`
@@ -55,11 +57,12 @@ export const PlanetsPage: FunctionComponent<Props> = ({ age, db, onBack }) => {
   };
 
   useEffect(() => {
-    getData();
     console.info("Reading data");
-    setTimeout(() => {
-      setShowProfile(true);
-    }, TRANSITION_DELAY * 1000);
+    getData().then(() => {
+      setTimeout(() => {
+        setShowProfile(true);
+      }, (TRANSITION_DELAY + 1) * 1000);
+    });
   }, []);
 
   const isHome = (offset: number) => age % planets.length === offset;
