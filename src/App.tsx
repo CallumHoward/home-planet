@@ -6,18 +6,28 @@ import { PlanetsPage } from "./pages/planets-page";
 // import { TitlesPage } from "./pages/titles-page";
 import { secondary } from "./styles/styles";
 
-const StyledApp = styled.div`
-  color: ${secondary};
-`;
-
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 import { TitlesPage } from "./pages/titles-page";
+import { StyledButton as StyledButtonBase } from "./styles/page-styles";
 // import { upsertDb } from "./fixtures/content";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
+
+const StyledApp = styled.div`
+  color: ${secondary};
+`;
+
+const StyledButton = styled(StyledButtonBase)`
+  position: fixed;
+  bottom: 1rem;
+  left: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -40,6 +50,7 @@ const analytics = getAnalytics(app);
 export const App = () => {
   const [currentPage, setCurrentPage] = useState("titles");
   const [age, setAge] = useState<number | undefined>();
+  const [muted, setMuted] = useState<boolean>(false);
 
   useEffect(() => {
     // upsertDb(db);
@@ -65,13 +76,24 @@ export const App = () => {
         }
         return renderDefaultPage();
       case "titles":
-        return (
-          <TitlesPage onNext={() => setCurrentPage("landing")} />
-        );
+        return <TitlesPage onNext={() => setCurrentPage("landing")} />;
       default:
         return renderDefaultPage();
     }
   };
 
-  return <StyledApp className="App">{renderPage(currentPage)}</StyledApp>;
+  return (
+    <>
+      <StyledApp className="App">{renderPage(currentPage)}</StyledApp>
+      <StyledButton onClick={() => setMuted(!muted)}>
+        <span className="material-icons">{muted ? "volume_off" : "volume_up"}</span>
+      </StyledButton>
+      <audio loop autoPlay muted={muted}>
+        <source
+          src="assets/betarecords_neptunethemysticgustavholst.mp3"
+          type="audio/mpeg"
+        />
+      </audio>
+    </>
+  );
 };
