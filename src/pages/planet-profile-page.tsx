@@ -35,8 +35,11 @@ const StyledSvg = styled.img`
 `;
 
 const Subtitle = styled.h2`
-  margin: 0.5rem 1rem 1rem;
+  font-family: forgottenfuturistregular, Arial, Helvetica, sans-serif;
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
   font-size: 1.5rem;
+  margin: 0.5rem 1rem 1rem;
   color: ${primary};
 `;
 
