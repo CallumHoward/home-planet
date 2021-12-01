@@ -1,13 +1,13 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { ContentContainer } from "../styles/page-styles";
 import Starfield from "../components/starfield";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { collection, Firestore, getDocs } from "firebase/firestore";
 import type { Planet } from "../types/content";
 import { GlowingPlanet, PlanetProfilePage } from "./planet-profile-page";
-import { circle, sideToSide, zoom } from "../styles/styles";
+import { circle, zoom } from "../styles/styles";
 
-const TRANSITION_DELAY = 10;
+const TRANSITION_DELAY = 5;
 const TRANSITION_DURATION = 5;
 
 const PlanetsContainer = styled.div`
@@ -27,13 +27,33 @@ const Gravity = styled.div<{ offset: number }>`
   position: absolute;
   top: 50%;
   left: 50%;
+
   margin-left: -200px;
-  animation: ${sideToSide} 6s infinite ${(p) => p.offset}s ease-in-out alternate;
+  animation: ${keyframes`
+    to {
+      transform: translateX(400px);
+    }
+  `} 6s infinite ${(p) => p.offset}s ease-in-out alternate;
+
+  @media only screen and (max-width: 768px) {
+    margin-left: -100px;
+    animation: ${keyframes`
+      to {
+        transform: translateX(200px);
+      }
+    `} 6s infinite ${(p) => p.offset}s ease-in-out alternate;
+  }
 `;
 
 const Satellite = styled(GlowingPlanet)<{ offset: number }>`
   margin-left: -200px;
   transform-origin: 200px center;
+
+  @media only screen and (max-width: 768px) {
+    margin-left: -100px;
+    transform-origin: 100px center;
+  }
+
   animation: ${circle} 12s infinite ${(p) => p.offset}s linear;
 `;
 

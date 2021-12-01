@@ -44,7 +44,7 @@ export const neon2 = keyframes`
 
 export const sideToSide = keyframes`
   to {
-    transform: translateX(400px);
+    transform: translateX(40px);
   }
 `;
 
