@@ -1,5 +1,6 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
 import styled from "styled-components";
+import { doc, Firestore, setDoc } from "firebase/firestore";
 import {
   ContentContainer,
   StyledButton,
@@ -38,13 +39,22 @@ type Props = {
   age: number | undefined;
   onChangeAge: (newAge: number) => void;
   onContinue: () => void;
+  db: Firestore;
 };
 
 export const LandingPage: FunctionComponent<Props> = ({
   age,
   onChangeAge,
   onContinue,
+  db,
 }) => {
+  const [name, setName] = useState<string | undefined>();
+
+  const setHome = async (name: string, age: number) => {
+    const contentRef = doc(db, "visitors", name);
+    await setDoc(contentRef, { name, age }, { merge: true });
+  };
+
   return (
     <ContentContainer>
       <StyledH1>
@@ -58,14 +68,18 @@ export const LandingPage: FunctionComponent<Props> = ({
       <div>
         <StyledInput
           placeholder={"Name..."}
-          // onChange={}
+          onChange={(e) => setName(e.target.value)}
         ></StyledInput>
         <StyledInput
+          type={"number"}
           placeholder={"Age..."}
           onChange={(e) => onChangeAge(parseInt(e.target.value))}
         ></StyledInput>
         <StyledButton
           onClick={() => {
+            if (!!name && !!age) {
+              setHome(name, age);
+            }
             !!age && onContinue();
           }}
         >

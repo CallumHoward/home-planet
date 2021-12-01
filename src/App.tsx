@@ -70,6 +70,7 @@ export const App = () => {
         age={age}
         onChangeAge={(newAge: number) => setAge(newAge)}
         onContinue={() => setCurrentPage("planets")}
+        db={db}
       />
     );
   };
