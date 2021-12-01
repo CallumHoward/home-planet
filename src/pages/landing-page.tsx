@@ -52,7 +52,7 @@ export const LandingPage: FunctionComponent<Props> = ({
 
   const setHome = async (name: string, age: number) => {
     const contentRef = doc(db, "visitors", name);
-    await setDoc(contentRef, { name, age }, { merge: true });
+    await setDoc(contentRef, { name, age });
   };
 
   return (

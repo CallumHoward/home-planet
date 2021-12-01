@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
+import { Soul } from "../components/soul";
 import { ContentContainer, StyledButton } from "../styles/page-styles";
 import { neon2, primary, secondary, secondaryGlow } from "../styles/styles";
 import type { Planet } from "../types/content";
@@ -7,6 +8,18 @@ import type { Planet } from "../types/content";
 const PlanetNameContainer = styled.div`
   text-align: center;
   font-size: 7em;
+`;
+
+const SoulsContainer = styled.div`
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+
+  * {
+    margin: 1.5rem;
+  }
 `;
 
 const StyledH1 = styled.h1`
@@ -118,11 +131,13 @@ const ContainerShadow = styled.div`
 
 type Props = {
   planet: Planet;
+  visitorNames: string[];
   onBack: () => void;
 };
 
 export const PlanetProfilePage: FunctionComponent<Props> = ({
   planet,
+  visitorNames,
   onBack,
 }) => {
   return (
@@ -156,6 +171,12 @@ export const PlanetProfilePage: FunctionComponent<Props> = ({
       <StyledButton onClick={onBack} style={{ marginBottom: "5rem" }}>
         {"<"}
       </StyledButton>
+      <Subtitle>Souls who are home here</Subtitle>
+      <SoulsContainer>
+        {visitorNames.map((name: string, i: number) => (
+          <Soul key={i} name={name} />
+        ))}
+      </SoulsContainer>
       <ContainerShadow />
     </ContentContainer>
   );
