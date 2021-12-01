@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { EnterPage } from "./pages/enter-page";
 import { LandingPage } from "./pages/landing-page";
 import { PlanetsPage } from "./pages/planets-page";
 import { TitlesPage } from "./pages/titles-page";
@@ -48,13 +49,20 @@ const db = getFirestore(app);
 const analytics = getAnalytics(app);
 
 export const App = () => {
-  const [currentPage, setCurrentPage] = useState("titles");
+  const [currentPage, setCurrentPage] = useState("enter");
   const [age, setAge] = useState<number | undefined>();
   const [muted, setMuted] = useState<boolean>(false);
 
   useEffect(() => {
     // upsertDb(db);
   }, []);
+
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const playMusic = () => {
+    if (audioRef && audioRef.current) {
+      audioRef.current.play();
+    }
+  };
 
   const renderDefaultPage = () => {
     return (
@@ -77,6 +85,15 @@ export const App = () => {
         return renderDefaultPage();
       case "titles":
         return <TitlesPage onNext={() => setCurrentPage("landing")} />;
+      case "enter":
+        return (
+          <EnterPage
+            onNext={() => {
+              setCurrentPage("titles");
+              playMusic();
+            }}
+          />
+        );
       default:
         return renderDefaultPage();
     }
@@ -86,9 +103,11 @@ export const App = () => {
     <>
       <StyledApp className="App">{renderPage(currentPage)}</StyledApp>
       <StyledButton onClick={() => setMuted(!muted)}>
-        <span className="material-icons">{muted ? "volume_off" : "volume_up"}</span>
+        <span className="material-icons">
+          {muted ? "volume_off" : "volume_up"}
+        </span>
       </StyledButton>
-      <audio loop autoPlay muted={muted}>
+      <audio ref={audioRef} loop muted={muted}>
         <source
           src="assets/betarecords_neptunethemysticgustavholst.mp3"
           type="audio/mpeg"
