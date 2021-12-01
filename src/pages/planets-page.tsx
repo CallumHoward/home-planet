@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
-import { ContentContainer, StyledButton } from "../styles/page-styles";
+import { ContentContainer } from "../styles/page-styles";
 import Starfield from "../components/starfield";
 import styled from "styled-components";
 import { collection, Firestore, getDocs } from "firebase/firestore";
@@ -76,19 +76,12 @@ export const PlanetsPage: FunctionComponent<Props> = ({ age, db, onBack }) => {
           .map(({ offset, colors }) => {
             const timeOffset = -offset;
             return (
-              <Gravity offset={timeOffset}>
+              <Gravity key={offset} offset={timeOffset}>
                 <Satellite colors={colors} scale={0.1} offset={timeOffset} />
               </Gravity>
             );
           })}
       </PlanetsContainer>
-      <StyledButton
-        onClick={() => {
-          setShowProfile(true);
-        }}
-      >
-        {">"}
-      </StyledButton>
     </ContentContainer>
   );
 
