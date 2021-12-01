@@ -53,6 +53,7 @@ export const StyledButton = styled.button`
   padding: 0.5rem;
   box-sizing: content-box;
 
+  cursor: pointer;
   border: 2px solid ${secondary};
   background: black;
   color: ${secondary};

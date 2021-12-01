@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-
-import { LandingPage } from "./pages/landing-page";
-import { PlanetsPage } from "./pages/planets-page";
-// import { TitlesPage } from "./pages/titles-page";
-import { secondary } from "./styles/styles";
-
-// Import the functions you need from the SDKs you need
+import { getAnalytics } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAnalytics } from "firebase/analytics";
+import React, { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
+import { LandingPage } from "./pages/landing-page";
+import { PlanetsPage } from "./pages/planets-page";
 import { TitlesPage } from "./pages/titles-page";
 import { StyledButton as StyledButtonBase } from "./styles/page-styles";
+import { secondary } from "./styles/styles";
 // import { upsertDb } from "./fixtures/content";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 const StyledApp = styled.div`
   color: ${secondary};
 `;
 
 const StyledButton = styled(StyledButtonBase)`
+  opacity: 75%;
+  transform: scale(0.75);
+  :hover {
+    opacity: 100%;
+  }
+
   position: fixed;
   bottom: 1rem;
   left: 2rem;
