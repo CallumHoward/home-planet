@@ -36,6 +36,12 @@ export const StyledInput = styled.input`
   border-radius: 0;
   background: black;
   color: white;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
 
 export const StyledButton = styled.button`
